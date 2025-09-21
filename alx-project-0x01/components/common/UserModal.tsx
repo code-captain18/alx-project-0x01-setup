@@ -71,7 +71,12 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        onSubmit(user);
+        // Create a complete user object with an id for submission
+        const userWithId = {
+            ...user,
+            id: Date.now() // Generate a unique id based on timestamp
+        };
+        onSubmit(userWithId);
         onClose();
     };
 
